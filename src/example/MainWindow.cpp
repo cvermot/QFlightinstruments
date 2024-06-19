@@ -46,7 +46,8 @@ MainWindow::MainWindow( QWidget *parent ) :
 
     _timerId = startTimer( 0 );
 
-    _time.start();
+    //_time.start();
+    _time.currentTime();
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -70,9 +71,9 @@ void MainWindow::timerEvent( QTimerEvent *event )
     /////////////////////////////////
 
     // getting time step
-    double timeStep = _time.restart();
+    double timeStep = _time.second();
 
-    _realTime = _realTime + timeStep / 1000.0;
+    _realTime = _realTime + timeStep / 100.0;
 
     // flight and navigation parameters to be shown on instruments
     double alpha     =  0.0;
@@ -113,7 +114,7 @@ void MainWindow::timerEvent( QTimerEvent *event )
     {
         // automatic parametes setting
 
-        _playTime = _playTime + timeStep / 1000.0;
+        _playTime = _playTime + timeStep / 100.0;
 
         alpha     =     20.0 * sin( _playTime /  10.0 );
         beta      =     15.0 * sin( _playTime /  10.0 );

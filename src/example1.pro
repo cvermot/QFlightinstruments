@@ -1,4 +1,4 @@
-QT += core gui svg
+QT += core gui svg svgwidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -18,7 +18,7 @@ CONFIG += c++11
 win32: CONFIG(release, debug|release): QMAKE_CXXFLAGS += -O2
 unix:  CONFIG(release, debug|release): QMAKE_CXXFLAGS += -O2
 
-win32: QMAKE_LFLAGS += /INCREMENTAL:NO
+#win32: QMAKE_LFLAGS += /INCREMENTAL:NO
 
 ################################################################################
 
