@@ -1,5 +1,5 @@
 /****************************************************************************//*
- * Copyright (C) 2021 Marek M. Cel
+ * Copyright (C) 2024 Clement Vermot-Desroches
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the "Software"),
@@ -19,52 +19,90 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef WIDGETHI_H
-#define WIDGETHI_H
+#ifndef QFI_VOR_H
+#define QFI_VOR_H
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include <QWidget>
+#include <QGraphicsView>
+#include <QGraphicsSvgItem>
 
-#include <qfi/qfi_HI.h>
-
-#include "LayoutSquare.h"
-
-////////////////////////////////////////////////////////////////////////////////
-
-namespace Ui
-{
-class WidgetHI;
-}
+#include <qfi/qfi_defs.h>
+#include <qfi/qfi_enums.h>
 
 ////////////////////////////////////////////////////////////////////////////////
 
-class WidgetHI : public QWidget
+/**
+ * @brief Horizontal Indicator widget class.
+ */
+class QFIAPI qfi_VOR : public QGraphicsView
 {
     Q_OBJECT
 
 public:
 
-    explicit WidgetHI( QWidget *parent = Q_NULLPTR );
+    /** Constructor. */
+    explicit qfi_VOR( QWidget *parent = Q_NULLPTR );
 
-    ~WidgetHI();
+    /** Destructor. */
+    virtual ~qfi_VOR();
 
-    inline void redraw() { _hi->redraw(); }
+    /** Reinitiates widget. */
+    void reinit();
 
-    inline void setHeading( double heading )
-    {
-        _hi->setHeading( heading );
-    }
+    /** Refreshes (redraws) widget. */
+    void redraw();
+
+    /** @param course [deg] */
+    void setCourse( double course );
+
+    /** @param deviation [-] */
+    void setDeviation( double deviation, CDI cdi = CDI::Off );
+
+protected:
+
+    /** */
+    void resizeEvent( QResizeEvent *event );
 
 private:
-    
-    Ui::WidgetHI  *_ui;
-    qfi_HI        *_hi;
-    LayoutSquare  *_layoutSq;
 
-    void setupUi();
+    QGraphicsScene *_scene;
+
+    QGraphicsSvgItem *_itemFaceFixed;
+    QGraphicsSvgItem *_itemFace;
+    QGraphicsSvgItem *_itemTo;
+    QGraphicsSvgItem *_itemFrom;
+    QGraphicsSvgItem *_itemFlag;
+    QGraphicsSvgItem *_itemHand;
+    QGraphicsSvgItem *_itemCase;
+
+    double _course;
+    double _deviation;                  ///<
+    CDI _cdi;                           ///<
+
+    double _scaleX;
+    double _scaleY;
+
+    const int _originalHeight;
+    const int _originalWidth;
+
+    QPointF _originalHsiCtr;
+
+    const int _faceFixedZ;
+    const int _faceZ;
+    const int _toZ;
+    const int _fromZ;
+    const int _flagZ;
+    const int _handZ;
+    const int _caseZ;
+
+    void init();
+
+    void reset();
+
+    void updateView();
 };
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#endif // WIDGETHI_H
+#endif // QFI_VOR_H

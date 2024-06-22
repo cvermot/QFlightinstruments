@@ -122,7 +122,7 @@
      </property>
      <widget class="QWidget" name="tab_3">
       <attribute name="title">
-       <string>General Info</string>
+       <string>Flight Info</string>
       </attribute>
       <widget class="QPushButton" name="pushButtonStall">
        <property name="geometry">
@@ -671,7 +671,7 @@
      </widget>
      <widget class="QWidget" name="tab_4">
       <attribute name="title">
-       <string>EFIS Info</string>
+       <string>Nav Info</string>
       </attribute>
       <widget class="QComboBox" name="comboBoxCDI">
        <property name="geometry">

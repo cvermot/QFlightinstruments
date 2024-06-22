@@ -106,7 +106,7 @@ void MainWindow::timerEvent( QTimerEvent *event )
     qfi_EADI::LNAV lnav = qfi_EADI::LNAV::Off;
     qfi_EADI::VNAV vnav = qfi_EADI::VNAV::Off;
 
-    qfi_EHSI::CDI cdi = qfi_EHSI::CDI::Off;
+    CDI cdi = CDI::Off;
 
     qfi_EADI::PressureMode press_mode = qfi_EADI::PressureMode::STD;
 
@@ -231,9 +231,9 @@ void MainWindow::timerEvent( QTimerEvent *event )
 
     switch ( _ui->comboBoxCDI->currentIndex() )
     {
-        case (int)qfi_EHSI::CDI::Off  : cdi = qfi_EHSI::CDI::Off  ; break;
-        case (int)qfi_EHSI::CDI::TO   : cdi = qfi_EHSI::CDI::TO   ; break;
-        case (int)qfi_EHSI::CDI::FROM : cdi = qfi_EHSI::CDI::FROM ; break;
+        case (int)CDI::Off  : cdi = CDI::Off  ; break;
+        case (int)CDI::TO   : cdi = CDI::TO   ; break;
+        case (int)CDI::FROM : cdi = CDI::FROM ; break;
     }
 
     double press_coef = 1.0;
@@ -301,6 +301,9 @@ void MainWindow::timerEvent( QTimerEvent *event )
     _ui->widgetSix->getTC()  ->setSlipSkid  ( slipSkid * 15.0 );
     _ui->widgetSix->getTC()  ->setTurnRate  ( turnRate  );
     _ui->widgetSix->getVSI() ->setClimbRate ( climbRate );
+    _ui->widgetSix->getVOR() ->setCourse    ( crs );
+    _ui->widgetSix->getVOR() ->setDeviation  ( vor  , cdi );
+    //_ui->widgetEHSI->setDeviation  ( vor  , cdi );
 
     // redrawing widgets
 
@@ -313,6 +316,7 @@ void MainWindow::timerEvent( QTimerEvent *event )
     _ui->widgetSix->getHI()  ->redraw();
     _ui->widgetSix->getTC()  ->redraw();
     _ui->widgetSix->getVSI() ->redraw();
+    _ui->widgetSix->getVOR() ->redraw();
 
     // incrementing number of steps
 

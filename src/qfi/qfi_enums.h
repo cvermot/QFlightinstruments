@@ -1,5 +1,5 @@
 /****************************************************************************//*
- * Copyright (C) 2021 Marek M. Cel
+ * Copyright (C) 2024 Clement Vermot-Desroches
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the "Software"),
@@ -19,52 +19,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef WIDGETHI_H
-#define WIDGETHI_H
 
-////////////////////////////////////////////////////////////////////////////////
+#ifndef QFI_ENUMS_H
+#define QFI_ENUMS_H
 
-#include <QWidget>
-
-#include <qfi/qfi_HI.h>
-
-#include "LayoutSquare.h"
-
-////////////////////////////////////////////////////////////////////////////////
-
-namespace Ui
+/** Course Deviation Indicator (CDI). */
+enum class CDI
 {
-class WidgetHI;
-}
-
-////////////////////////////////////////////////////////////////////////////////
-
-class WidgetHI : public QWidget
-{
-    Q_OBJECT
-
-public:
-
-    explicit WidgetHI( QWidget *parent = Q_NULLPTR );
-
-    ~WidgetHI();
-
-    inline void redraw() { _hi->redraw(); }
-
-    inline void setHeading( double heading )
-    {
-        _hi->setHeading( heading );
-    }
-
-private:
-    
-    Ui::WidgetHI  *_ui;
-    qfi_HI        *_hi;
-    LayoutSquare  *_layoutSq;
-
-    void setupUi();
+    Off = 0,
+    TO,
+    FROM
 };
 
-////////////////////////////////////////////////////////////////////////////////
-
-#endif // WIDGETHI_H
+#endif // QFI_ENUMS_H

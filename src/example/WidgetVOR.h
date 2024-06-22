@@ -1,5 +1,5 @@
 /****************************************************************************//*
- * Copyright (C) 2021 Marek M. Cel
+ * Copyright (C) 2024 Clement Vermot-Desroches
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the "Software"),
@@ -19,14 +19,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef WIDGETHI_H
-#define WIDGETHI_H
+#ifndef WIDGETVOR_H
+#define WIDGETVOR_H
 
 ////////////////////////////////////////////////////////////////////////////////
 
 #include <QWidget>
 
-#include <qfi/qfi_HI.h>
+#include <qfi/qfi_VOR.h>
 
 #include "LayoutSquare.h"
 
@@ -34,32 +34,37 @@
 
 namespace Ui
 {
-class WidgetHI;
+class WidgetVOR;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 
-class WidgetHI : public QWidget
+class WidgetVOR : public QWidget
 {
     Q_OBJECT
 
 public:
 
-    explicit WidgetHI( QWidget *parent = Q_NULLPTR );
+    explicit WidgetVOR( QWidget *parent = Q_NULLPTR );
 
-    ~WidgetHI();
+    ~WidgetVOR();
 
-    inline void redraw() { _hi->redraw(); }
+    inline void redraw() { _vor->redraw(); }
 
-    inline void setHeading( double heading )
+    inline void setCourse( double course )
     {
-        _hi->setHeading( heading );
+        _vor->setCourse( course );
+    }
+
+    inline void setDeviation( double deviation, CDI cdi )
+    {
+        _vor->setDeviation( deviation, cdi );
     }
 
 private:
-    
-    Ui::WidgetHI  *_ui;
-    qfi_HI        *_hi;
+
+    Ui::WidgetVOR  *_ui;
+    qfi_VOR        *_vor;
     LayoutSquare  *_layoutSq;
 
     void setupUi();
@@ -67,4 +72,4 @@ private:
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#endif // WIDGETHI_H
+#endif // WIDGETVOR_H

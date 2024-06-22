@@ -1,6 +1,8 @@
 /****************************************************************************//*
  * Copyright (C) 2021 Marek M. Cel
  *
+ * Modified by Clément Vermot-Desroches (2024)
+ *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the "Software"),
  * to deal in the Software without restriction, including without limitation
@@ -66,7 +68,7 @@ public:
         _ehsi->setBearing( bearing, visible );
     }
 
-    inline void setDeviation( double deviation, qfi_EHSI::CDI cdi )
+    inline void setDeviation( double deviation, CDI cdi )
     {
         _ehsi->setDeviation( deviation, cdi );
     }

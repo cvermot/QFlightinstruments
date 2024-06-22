@@ -1,6 +1,8 @@
 /****************************************************************************//*
  * Copyright (C) 2021 Marek M. Cel
  *
+ * Modified by Clément Vermot-Desroches (2024)
+ *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the "Software"),
  * to deal in the Software without restriction, including without limitation
@@ -32,6 +34,7 @@
 #include "WidgetHI.h"
 #include "WidgetTC.h"
 #include "WidgetVSI.h"
+#include "WidgetVOR.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -58,6 +61,7 @@ public:
     WidgetHI  * getHI  () { return _widgetHI;  }
     WidgetTC  * getTC  () { return _widgetTC ; }
     WidgetVSI * getVSI () { return _widgetVSI; }
+    WidgetVOR * getVOR () { return _widgetVOR; }
 
 private:
 
@@ -69,6 +73,7 @@ private:
     WidgetHI  *_widgetHI;
     WidgetTC  *_widgetTC;
     WidgetVSI *_widgetVSI;
+    WidgetVOR *_widgetVOR;
 };
 
 ////////////////////////////////////////////////////////////////////////////////

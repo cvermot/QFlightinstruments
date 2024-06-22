@@ -1,6 +1,8 @@
 /****************************************************************************//*
  * Copyright (C) 2021 Marek M. Cel
  *
+ * Modified by Clément Vermot-Desroches (2024)
+ *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the "Software"),
  * to deal in the Software without restriction, including without limitation
@@ -28,6 +30,7 @@
 #include <QGraphicsSvgItem>
 
 #include <qfi/qfi_defs.h>
+#include <qfi/qfi_enums.h>
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -39,14 +42,6 @@ class QFIAPI qfi_EHSI : public QGraphicsView
     Q_OBJECT
 
 public:
-
-    /** Course Deviation Indicator (CDI). */
-    enum class CDI
-    {
-        Off = 0,
-        TO,
-        FROM
-    };
 
     /** @brief Constructor. */
     explicit qfi_EHSI( QWidget *parent = Q_NULLPTR );

@@ -1,5 +1,5 @@
 /****************************************************************************//*
- * Copyright (C) 2021 Marek M. Cel
+ * Copyright (C) 2024 Clement Vermot-Desroches
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the "Software"),
@@ -19,52 +19,44 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef WIDGETHI_H
-#define WIDGETHI_H
+
+#include <example/WidgetVOR.h>
+#include <ui_WidgetVOR.h>
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include <QWidget>
-
-#include <qfi/qfi_HI.h>
-
-#include "LayoutSquare.h"
-
-////////////////////////////////////////////////////////////////////////////////
-
-namespace Ui
+WidgetVOR::WidgetVOR( QWidget *parent ) :
+    QWidget( parent ),
+    _ui( new Ui::WidgetVOR ),
+    _vor ( Q_NULLPTR ),
+    _layoutSq ( Q_NULLPTR )
 {
-class WidgetHI;
+    _ui->setupUi( this );
+
+    setupUi();
+
+    _vor = _ui->graphicsVOR;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 
-class WidgetHI : public QWidget
+WidgetVOR::~WidgetVOR()
 {
-    Q_OBJECT
+    if ( _layoutSq ) delete _layoutSq;
+    _layoutSq = Q_NULLPTR;
 
-public:
-
-    explicit WidgetHI( QWidget *parent = Q_NULLPTR );
-
-    ~WidgetHI();
-
-    inline void redraw() { _hi->redraw(); }
-
-    inline void setHeading( double heading )
-    {
-        _hi->setHeading( heading );
-    }
-
-private:
-    
-    Ui::WidgetHI  *_ui;
-    qfi_HI        *_hi;
-    LayoutSquare  *_layoutSq;
-
-    void setupUi();
-};
+    if ( _ui ) delete _ui;
+    _ui = Q_NULLPTR;
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#endif // WIDGETHI_H
+void WidgetVOR::setupUi()
+{
+    _layoutSq = new LayoutSquare( this );
+
+    _layoutSq->setContentsMargins( 0, 0, 0, 0 );
+    _layoutSq->addWidget( _ui->graphicsVOR );
+
+    setLayout( _layoutSq );
+}

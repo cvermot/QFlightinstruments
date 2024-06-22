@@ -1,6 +1,8 @@
 /****************************************************************************//*
  * Copyright (C) 2021 Marek M. Cel
  *
+ * Modified by Clément Vermot-Desroches (2024)
+ *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the "Software"),
  * to deal in the Software without restriction, including without limitation
@@ -34,7 +36,8 @@ WidgetSix::WidgetSix( QWidget *parent ) :
     _widgetASI ( Q_NULLPTR ),
     _widgetHI  ( Q_NULLPTR ),
     _widgetTC  ( Q_NULLPTR ),
-    _widgetVSI ( Q_NULLPTR )
+    _widgetVSI ( Q_NULLPTR ),
+    _widgetVOR ( Q_NULLPTR )
 {
     _ui->setupUi( this );
 
@@ -44,6 +47,7 @@ WidgetSix::WidgetSix( QWidget *parent ) :
     _widgetHI  = _ui->widgetHI;
     _widgetTC  = _ui->widgetTC;
     _widgetVSI = _ui->widgetVSI;
+    _widgetVOR = _ui->widgetVOR;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

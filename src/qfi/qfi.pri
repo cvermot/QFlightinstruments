@@ -1,6 +1,7 @@
 HEADERS += \
     $$PWD/qfi_defs.h \
-    $$PWD/qfi_doxygen.h
+    $$PWD/qfi_doxygen.h \
+    $$PWD/qfi_enums.h
 
 ################################################################################
 
@@ -32,6 +33,7 @@ HEADERS += \
     $$PWD/qfi_AI.h \
     $$PWD/qfi_HI.h \
     $$PWD/qfi_VSI.h \
+    $$PWD/qfi_VOR.h \
     $$PWD/qfi_ASI.h \
     $$PWD/qfi_ALT.h \
     $$PWD/qfi_TC.h
@@ -40,6 +42,7 @@ SOURCES += \
     $$PWD/qfi_AI.cpp \
     $$PWD/qfi_HI.cpp \
     $$PWD/qfi_VSI.cpp \
+    $$PWD/qfi_VOR.cpp \
     $$PWD/qfi_ASI.cpp \
     $$PWD/qfi_ALT.cpp \
     $$PWD/qfi_TC.cpp

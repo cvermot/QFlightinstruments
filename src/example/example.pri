@@ -8,10 +8,12 @@ HEADERS += \
     $$PWD/WidgetEHSI.h \
     $$PWD/WidgetHI.h \
     $$PWD/WidgetTC.h \
+    $$PWD/WidgetVOR.h \
     $$PWD/WidgetVSI.h \
     $$PWD/WidgetSix.h
 
 SOURCES += \
+    $$PWD/WidgetVOR.cpp \
     $$PWD/main.cpp \
     $$PWD/LayoutSquare.cpp \
     $$PWD/MainWindow.cpp \
@@ -34,5 +36,6 @@ FORMS += \
     $$PWD/WidgetEHSI.ui \
     $$PWD/WidgetHI.ui \
     $$PWD/WidgetTC.ui \
+    $$PWD/WidgetVOR.ui \
     $$PWD/WidgetVSI.ui \
     $$PWD/WidgetSix.ui

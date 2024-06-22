@@ -46,6 +46,16 @@
        </property>
       </widget>
      </item>
+	 <item row="0" column="3">
+      <widget class="WidgetVOR" name="widgetVOR" native="true">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>99</horstretch>
+         <verstretch>99</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </item>
      <item row="1" column="0">
       <widget class="WidgetTC" name="widgetTC" native="true">
        <property name="sizePolicy">
@@ -91,6 +101,12 @@
    <class>WidgetALT</class>
    <extends>QWidget</extends>
    <header>example/WidgetALT.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>WidgetVOR</class>
+   <extends>QWidget</extends>
+   <header>example/WidgetVOR.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
