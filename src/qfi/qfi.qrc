@@ -74,5 +74,13 @@
         <file>images/vor/vor_flag.svg</file>
         <file>images/vor/vor_from.svg</file>
         <file>images/vor/vor_to.svg</file>
+        <file>images/ils/ils.svg</file>
+        <file>images/ils/ils_case.svg</file>
+        <file>images/ils/ils_case_fixed.svg</file>
+        <file>images/ils/ils_face.svg</file>
+        <file>images/ils/ils_flag_gs.svg</file>
+        <file>images/ils/ils_flag_nav.svg</file>
+        <file>images/ils/ils_hand_gs.svg</file>
+        <file>images/ils/ils_hand_nav.svg</file>
     </qresource>
 </RCC>

@@ -34,6 +34,7 @@ HEADERS += \
     $$PWD/qfi_HI.h \
     $$PWD/qfi_VSI.h \
     $$PWD/qfi_VOR.h \
+    $$PWD/qfi_ILS.h \
     $$PWD/qfi_ASI.h \
     $$PWD/qfi_ALT.h \
     $$PWD/qfi_TC.h
@@ -43,6 +44,7 @@ SOURCES += \
     $$PWD/qfi_HI.cpp \
     $$PWD/qfi_VSI.cpp \
     $$PWD/qfi_VOR.cpp \
+    $$PWD/qfi_ILS.cpp \
     $$PWD/qfi_ASI.cpp \
     $$PWD/qfi_ALT.cpp \
     $$PWD/qfi_TC.cpp

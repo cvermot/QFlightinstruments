@@ -19,8 +19,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef QFI_VOR_H
-#define QFI_VOR_H
+#ifndef QFI_ILS_H
+#define QFI_ILS_H
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -35,17 +35,17 @@
 /**
  * @brief Horizontal Indicator widget class.
  */
-class QFIAPI qfi_VOR : public QGraphicsView
+class QFIAPI qfi_ILS : public QGraphicsView
 {
     Q_OBJECT
 
 public:
 
     /** Constructor. */
-    explicit qfi_VOR( QWidget *parent = Q_NULLPTR );
+    explicit qfi_ILS( QWidget *parent = Q_NULLPTR );
 
     /** Destructor. */
-    virtual ~qfi_VOR();
+    virtual ~qfi_ILS();
 
     /** Reinitiates widget. */
     void reinit();
@@ -56,8 +56,12 @@ public:
     /** @param course [deg] */
     void setCourse( double course );
 
-    /** @param deviation [-] */
-    void setDeviation( double deviation, CDI cdi = CDI::Off );
+    /**
+     * @param normalized horizontal deviation dot position (range from -1.0 to 1.0)
+     * @param normalized vertical deviation dot position (range from -1.0 to 1.0)
+     * @param deviation horizontal dot visibility
+     * @param deviation vertical dot visibility */
+    void setDots( double dotH, double dotV, bool visibleH, bool visibleV );
 
 protected:
 
@@ -72,13 +76,22 @@ private:
     QGraphicsSvgItem *_itemFace;
     QGraphicsSvgItem *_itemTo;
     QGraphicsSvgItem *_itemFrom;
-    QGraphicsSvgItem *_itemFlag;
-    QGraphicsSvgItem *_itemHand;
+    QGraphicsSvgItem *_itemFlagNav;
+    QGraphicsSvgItem *_itemFlagGs;
+    QGraphicsSvgItem *_itemHandNav;
+    QGraphicsSvgItem *_itemHandGs;
     QGraphicsSvgItem *_itemCase;
 
     double _course;
-    double _deviation;                  ///<
-    CDI _cdi;                           ///<
+    double _dotH;
+    double _dotV;
+    bool _visibleH;
+    bool _visibleV;
+
+    double _dotVPos;
+    double _dotVPos_old;
+    double _dotHPos;
+    double _dotHPos_old;
 
     double _scaleX;
     double _scaleY;
@@ -90,11 +103,11 @@ private:
     QPointF _originalHandCtr;
 
     const int _faceFixedZ;
+    const int _handNavZ;
+    const int _handGsZ;
     const int _faceZ;
-    const int _toZ;
-    const int _fromZ;
-    const int _flagZ;
-    const int _handZ;
+    const int _flagNavZ;
+    const int _flagGsZ;
     const int _caseZ;
 
     void init();
@@ -106,4 +119,4 @@ private:
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#endif // QFI_VOR_H
+#endif // QFI_ILS_H
